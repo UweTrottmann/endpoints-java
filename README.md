@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/cloudendpoints/endpoints-java.svg?branch=master)](https://travis-ci.org/cloudendpoints/endpoints-java)
-[![codecov](https://codecov.io/gh/cloudendpoints/endpoints-java/branch/master/graph/badge.svg)](https://codecov.io/gh/cloudendpoints/endpoints-java)
+**❗️ This is an unofficial fork fixing various issues. Many documentation files are not updated to reflect this, yet. ❗**
 
 # Endpoints Java Framework
 
