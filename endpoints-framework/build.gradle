@@ -69,13 +69,8 @@ task copyTestResources(type: Copy) {
 processTestResources.dependsOn copyTestResources
 
 dependencies {
-  include(project(":discovery-client")) {
-    // We already include all of the dependencies needed for the discovery
-    // client, and they are often newer versions. Leaving this out can cause
-    // Android Studio to confuse different versions of Jackson 2 and Guava,
-    // leading to test failures.
-    transitive = false
-  }
+  // TODO change to api and version v1-rev20200806-2.0.0.
+  compile 'com.google.apis:google-api-services-discovery:v1-rev134-1.25.0'
   compile group: 'com.google.guava', name: 'guava', version: guavaVersion
   compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: jacksonVersion
   compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: jacksonVersion
