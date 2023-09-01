@@ -251,7 +251,7 @@ public class ServletRequestParamReaderTest {
   public void testReadBlobParameter() throws Exception {
     Method method =
         TestEndpoint.class.getDeclaredMethod("doBlob", Blob.class);
-    Object[] params = readParameters("{\"blob\":\"AQIDBA==\"}", method);
+    Object[] params = readParameters("{\"blob\":\"AQIDBA\"}", method);
 
     assertEquals(1, params.length);
     assertThat(((Blob) params[0]).getBytes()).isEqualTo(new byte[]{1, 2, 3, 4});
