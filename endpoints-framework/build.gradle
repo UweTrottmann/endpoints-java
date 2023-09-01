@@ -72,8 +72,6 @@ dependencies {
   // TODO change to api and version v1-rev20200806-2.0.0.
   compile 'com.google.apis:google-api-services-discovery:v1-rev134-1.25.0'
   compile group: 'com.google.guava', name: 'guava', version: guavaVersion
-  compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: jacksonVersion
-  compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: jacksonVersion
   compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: jacksonVersion
   compile group: 'com.google.appengine', name: 'appengine-api-1.0-sdk', version: appengineVersion
   compile group: 'com.google.flogger', name: 'flogger', version: floggerVersion
