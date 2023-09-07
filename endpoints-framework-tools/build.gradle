@@ -44,12 +44,18 @@ apply plugin: 'application'
 mainClassName = 'com.google.api.server.spi.tools.EndpointsTool'
 
 dependencies {
-  compile project(':endpoints-framework')
-  compile group: 'com.google.appengine', name: 'appengine-tools-sdk', version: appengineVersion
+  implementation project(':endpoints-framework')
+  implementation group: 'com.google.appengine', name: 'appengine-tools-sdk', version: appengineVersion
+  implementation group: 'io.swagger', name: 'swagger-core', version: swaggerVersion
+  implementation group: 'io.swagger', name: 'swagger-models', version: swaggerVersion
 
-  testCompile project(':test-utils')
-  testCompile group: 'junit', name: 'junit', version: junitVersion
-  testCompile group: 'org.mockito', name: 'mockito-core', version: mockitoVersion
-  testCompile group: 'com.google.truth', name: 'truth', version: truthVersion
-  testCompile group: 'org.springframework', name: 'spring-test', version: springtestVersion
+  testImplementation project(':test-utils')
+  testImplementation group: 'junit', name: 'junit', version: junitVersion
+  testImplementation group: 'javax.inject', name: 'javax.inject', version: javaxinjectVersion
+  testImplementation group: 'org.mockito', name: 'mockito-core', version: mockitoVersion
+  testImplementation group: 'com.google.truth', name: 'truth', version: truthVersion
+  testImplementation group: 'org.springframework', name: 'spring-test', version: springtestVersion
+  testImplementation group: 'com.google.appengine', name: 'appengine-api-1.0-sdk', version: appengineVersion
+
+  testCompileOnly group: 'javax.servlet', name: 'servlet-api', version: servletVersion
 }

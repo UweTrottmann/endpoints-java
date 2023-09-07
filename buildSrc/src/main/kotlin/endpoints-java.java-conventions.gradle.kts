@@ -3,7 +3,7 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 // Configures common Java settings
 
 plugins {
-    java
+    `java-library`
     jacoco
 }
 
