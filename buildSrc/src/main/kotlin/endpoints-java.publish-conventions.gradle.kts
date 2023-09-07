@@ -5,7 +5,7 @@ plugins {
     id("signing")
 }
 
-version = "2.2.2"
+version = "2.2.3-SNAPSHOT"
 group = "com.uwetrottmann.endpoints"
 
 // Make javadoc task errors not break the build.
