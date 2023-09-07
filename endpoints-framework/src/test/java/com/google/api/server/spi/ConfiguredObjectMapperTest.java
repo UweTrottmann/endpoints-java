@@ -15,6 +15,25 @@
  */
 package com.google.api.server.spi;
 
+import com.fasterxml.jackson.core.Version;
+import com.fasterxml.jackson.databind.Module;
+import com.fasterxml.jackson.databind.Module.SetupContext;
+import com.google.api.server.spi.config.Transformer;
+import com.google.api.server.spi.config.model.ApiSerializationConfig;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.internal.stubbing.answers.Returns;
+import org.mockito.runners.MockitoJUnitRunner;
+
+import java.util.Collections;
+import java.util.Map;
+
 import static com.google.common.truth.Truth.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotSame;
@@ -22,25 +41,6 @@ import static org.junit.Assert.assertSame;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.when;
-
-import com.google.api.server.spi.config.Transformer;
-import com.google.api.server.spi.config.model.ApiSerializationConfig;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-
-import com.fasterxml.jackson.core.Version;
-import com.fasterxml.jackson.databind.Module;
-import com.fasterxml.jackson.databind.Module.SetupContext;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
-
-import java.util.Map;
 
 /** Unit tests for {@link ConfiguredObjectMapper}. */
 @RunWith(MockitoJUnitRunner.class)
@@ -75,6 +75,7 @@ public class ConfiguredObjectMapperTest {
   private static void doModuleSetup(Module module, String name) {
     when(module.getModuleName()).thenReturn(name);
     when(module.version()).thenReturn(Version.unknownVersion());
+    when(module.getDependencies()).thenAnswer(new Returns(Collections.emptyList()));
   }
 
   @Test
