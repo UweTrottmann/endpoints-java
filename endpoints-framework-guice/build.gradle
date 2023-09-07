@@ -14,10 +14,24 @@
  * limitations under the License.
  */
 
-configureMaven(
-    project,
-    'Endpoints Framework Guice Extension',
-    'Extension to configure the Endpoints Framework via Guice.')
+plugins {
+  id("endpoints-java.java-conventions")
+  id("endpoints-java.publish-conventions")
+}
+
+// Set project-specific publishing properties
+publishing {
+  publications {
+    mavenJava(MavenPublication) {
+      artifactId = "endpoints-framework-guice"
+      from components.java
+      pom {
+        name.set("Endpoints Framework Guice Extension")
+        description.set("Extension to configure the Endpoints Framework via Guice.")
+      }
+    }
+  }
+}
 
 dependencies {
   compileOnly project(':endpoints-framework')

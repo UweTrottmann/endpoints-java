@@ -14,10 +14,24 @@
  * limitations under the License.
  */
 
-configureMaven(
-    project,
-    'Endpoints Framework Tools',
-    'Command line tools for supporting the Endpoints Framework.')
+plugins {
+  id("endpoints-java.java-conventions")
+  id("endpoints-java.publish-conventions")
+}
+
+// Set project-specific publishing properties
+publishing {
+  publications {
+    mavenJava(MavenPublication) {
+      artifactId = "endpoints-framework-tools"
+      from components.java
+      pom {
+        name.set("Endpoints Framework Tools")
+        description.set("Command line tools for supporting the Endpoints Framework.")
+      }
+    }
+  }
+}
 
 // Needed to copy resources into build directories
 task copyTestResources(type: Copy) {

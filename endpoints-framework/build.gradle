@@ -14,6 +14,25 @@
  * limitations under the License.
  */
 
+plugins {
+  id("endpoints-java.java-conventions")
+  id("endpoints-java.publish-conventions")
+}
+
+// Set project-specific publishing properties
+publishing {
+  publications {
+    mavenJava(MavenPublication) {
+      artifactId = "endpoints-framework"
+      from components.java
+      pom {
+        name.set("Endpoints Framework")
+        description.set("A framework for building RESTful web APIs.")
+      }
+    }
+  }
+}
+
 configurations {
   include
   compile.extendsFrom include
@@ -59,8 +78,6 @@ task siteJavadoc(type: Javadoc) {
       apiTypes.collect({ "src/main/java/com/google/api/server/spi/types" })
   destinationDir = file("${project.docsDir}/site-docs")
 }
-
-configureMaven(project, 'Endpoints Framework', 'A framework for building RESTful web APIs.')
 
 task copyTestResources(type: Copy) {
   from "${projectDir}/src/test/resources"
