@@ -15,7 +15,6 @@
  */
 package com.google.api.server.spi.response;
 
-import com.fasterxml.jackson.core.Base64Variants;
 import com.google.api.server.spi.ConfiguredObjectMapper;
 import com.google.api.server.spi.Constant;
 import com.google.api.server.spi.ServiceException;
@@ -205,17 +204,17 @@ public class ServletResponseResultWriter implements ResultWriter {
   }
 
   private static SimpleModule getWriteBlobAsBase64Module() {
-    JsonSerializer<Blob> blobSerializer = new JsonSerializer<Blob>() {
+    JsonSerializer<Blob> dateSerializer = new JsonSerializer<Blob>() {
       @Override
       public void serialize(Blob value, JsonGenerator jgen, SerializerProvider provider)
           throws IOException {
         byte[] bytes = value.getBytes();
-        jgen.writeBinary(Base64Variants.MODIFIED_FOR_URL, bytes, 0, bytes.length);
+        jgen.writeBinary(bytes, 0, bytes.length);
       }
     };
     SimpleModule writeBlobAsBase64Module = new SimpleModule("writeBlobAsBase64Module",
         new Version(1, 0, 0, null, null, null));
-    writeBlobAsBase64Module.addSerializer(Blob.class, blobSerializer);
+    writeBlobAsBase64Module.addSerializer(Blob.class, dateSerializer);
     return writeBlobAsBase64Module;
   }
 

@@ -15,7 +15,6 @@
  */
 package com.google.api.server.spi.request;
 
-import com.fasterxml.jackson.core.Base64Variants;
 import com.google.api.server.spi.ConfiguredObjectMapper;
 import com.google.api.server.spi.EndpointMethod;
 import com.google.api.server.spi.EndpointsContext;
@@ -295,8 +294,7 @@ public class ServletRequestParamReader extends AbstractParamReader {
     @Override
     public Blob deserialize(JsonParser jsonParser, DeserializationContext context)
         throws IOException {
-      // Use same Base64 encoding as ObjectMapperUtil.createStandardObjectMapper of ConfiguredObjectMapper.
-      return new Blob(jsonParser.getBinaryValue(Base64Variants.MODIFIED_FOR_URL));
+      return new Blob(jsonParser.getBinaryValue());
     }
   }
 
