@@ -76,16 +76,11 @@ dependencies {
   compile group: 'com.google.appengine', name: 'appengine-api-1.0-sdk', version: appengineVersion
   compile group: 'com.google.flogger', name: 'flogger', version: floggerVersion
   runtime group: 'com.google.flogger', name: 'flogger-system-backend', version: floggerVersion
-  compile(group: 'com.google.http-client', name: 'google-http-client-jackson2', version: apiclientVersion) {
-    exclude group: 'com.google.guava', module: 'guava-jdk5'
+  compile(group: 'com.google.http-client', name: 'google-http-client-jackson2', version: httpclientVersion) {
     exclude group: 'com.fasterxml.jackson.core', module: 'jackson-core'
   }
-  compile(group: 'com.google.api-client', name: 'google-api-client', version: apiclientVersion) {
-    exclude group: 'com.google.guava', module: 'guava-jdk5'
-  }
-  compile(group: 'com.google.api-client', name: 'google-api-client-appengine', version: apiclientVersion) {
-    exclude group: 'com.google.guava', module: 'guava-jdk5'
-  }
+  compile(group: 'com.google.api-client', name: 'google-api-client', version: apiclientVersion)
+  compile(group: 'com.google.api-client', name: 'google-api-client-appengine', version: apiclientVersion)
   compile group: 'com.google.code.findbugs', name: 'jsr305', version: findbugsVersion
   compile group: 'commons-fileupload', name: 'commons-fileupload', version: fileUploadVersion
   compile group: 'io.swagger', name: 'swagger-models', version: swaggerVersion
