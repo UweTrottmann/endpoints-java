@@ -30,8 +30,8 @@ public class ObjectMapperUtilTest {
   public void createStandardObjectMapper_base64Variant() throws Exception {
     byte[] bytes = new byte[] {(byte) 0xff, (byte) 0xef};
     ObjectMapper mapper = ObjectMapperUtil.createStandardObjectMapper();
-    assertThat(mapper.writeValueAsString(bytes)).isEqualTo("\"_-8\"");
-    assertThat(mapper.readValue("\"_-8\"", byte[].class)).isEqualTo(bytes);
+    assertThat(mapper.writeValueAsString(bytes)).isEqualTo("\"/+8=\"");
+    assertThat(mapper.readValue("\"/+8=\"", byte[].class)).isEqualTo(bytes);
   }
 
   @Test

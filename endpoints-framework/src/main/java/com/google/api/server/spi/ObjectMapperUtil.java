@@ -78,7 +78,9 @@ public class ObjectMapperUtil {
         .configure(JsonParser.Feature.ALLOW_SINGLE_QUOTES, true)
         .configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true)
         .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-        .setBase64Variant(Base64Variants.MODIFIED_FOR_URL)
+        // Note: byte[] are not allowed as path or query parameters, only in the body,
+        // so keep the default Base64 variant to not break decoding of byte[] (and Blob).
+        .setBase64Variant(Base64Variants.MIME_NO_LINEFEEDS)
         .setSerializerFactory(
             BeanSerializerFactory.instance.withSerializerModifier(new DeepEmptyCheckingModifier()));
     AnnotationIntrospector pair = EndpointsFlag.JSON_USE_JACKSON_ANNOTATIONS.isEnabled()
