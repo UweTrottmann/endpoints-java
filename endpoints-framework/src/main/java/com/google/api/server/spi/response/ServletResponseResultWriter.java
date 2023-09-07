@@ -167,7 +167,7 @@ public class ServletResponseResultWriter implements ResultWriter {
         jgen.writeString(value.toRfc3339String());
       }
     };
-    SimpleModule writeDateAsStringModule = new SimpleModule("writeDateAsStringModule",
+    SimpleModule writeDateAsStringModule = new SimpleModule("writeDateAndTimeAsStringModule",
         new Version(1, 0, 0, null, null, null));
     writeDateAsStringModule.addSerializer(DateAndTime.class, dateAndTimeSerializer);
     return writeDateAsStringModule;
