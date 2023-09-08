@@ -4,7 +4,7 @@
 
 The Endpoints Java Framework aims to be a simple solution to assist in creation
 of RESTful web APIs in Java. This repository provides several artifacts, all
-in the `com.google.endpoints` group:
+in the `com.uwetrottmann.endpoints` group:
 
 1.  `endpoints-framework`: The core framework, required for all applications
     building Endpoints apps.
@@ -20,7 +20,7 @@ https://cloud.google.com/endpoints/docs/frameworks/java
 
 To install test versions to Maven for easier dependency management, simply run:
 
-    gradle install
+    ./gradlew publishToMavenLocal
 
 ## Migrating from the legacy Endpoints framework
 
@@ -29,14 +29,14 @@ the dependency with the `endpoints-framework` artifact from the
 `com.google.endpoints` group. In Maven, the new dependency looks like this:
 
     <dependency>
-      <groupId>com.google.endpoints</groupId>
+      <groupId>com.uwetrottmann.endpoints</groupId>
       <artifactId>endpoints-framework</artifactId>
-      <version>2.2.2</version>
+      <version>2.2.3</version>
     </dependency>
 
 In Gradle, the new dependency looks like this:
 
-    compile group: 'com.google.endpoints', name: 'endpoints-framework', version: '2.2.2'
+    compile group: 'com.uwetrottmann.endpoints', name: 'endpoints-framework', version: '2.2.3'
 
 You also need to update your `web.xml`. Simply replace all instances of
 `SystemServiceServlet` with `EndpointsServlet` and replace `/_ah/spi/*` with
