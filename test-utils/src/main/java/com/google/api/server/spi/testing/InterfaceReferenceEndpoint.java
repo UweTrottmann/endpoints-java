@@ -20,7 +20,7 @@ import com.google.api.server.spi.config.ApiReference;
 
 /**
  * Test endpoint that references {@link InterfaceConfiguration} and overrides an annotation
- * value.  Used to test that {@link @ApiReference} works with interfaces.
+ * value.  Used to test that {@link ApiReference @ApiReference} works with interfaces.
  */
 @ApiReference(InterfaceConfiguration.class)
 @Api(version = "v2")

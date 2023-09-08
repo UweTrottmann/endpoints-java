@@ -13,10 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+plugins {
+  id("endpoints-java.java-conventions")
+}
+
 dependencies {
-  compile project(':endpoints-framework')
-  compile group: 'javax.inject', name: 'javax.inject', version: javaxinjectVersion
-  compile group: 'junit', name: 'junit', version: junitVersion
-  compile group: 'org.mockito', name: 'mockito-core', version: mockitoVersion
-  compile group: 'com.google.truth', name: 'truth', version: truthVersion
+  implementation project(':endpoints-framework')
+  implementation group: 'com.google.appengine', name: 'appengine-api-1.0-sdk', version: appengineVersion
+  implementation group: 'javax.inject', name: 'javax.inject', version: javaxinjectVersion
+  implementation group: 'junit', name: 'junit', version: junitVersion
+  implementation group: 'org.mockito', name: 'mockito-core', version: mockitoVersion
+  implementation group: 'com.google.truth', name: 'truth', version: truthVersion
+
+  compileOnly group: 'javax.servlet', name: 'servlet-api', version: servletVersion
 }

@@ -26,7 +26,7 @@ import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.LowLevelHttpRequest;
 import com.google.api.client.http.LowLevelHttpResponse;
 import com.google.api.client.json.JsonObjectParser;
-import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.client.testing.http.MockHttpTransport;
 import com.google.api.client.testing.http.MockLowLevelHttpRequest;
 import com.google.api.client.testing.http.MockLowLevelHttpResponse;
@@ -199,7 +199,7 @@ public class GoogleAuthTest {
         };
       }
     };
-    HttpRequest httpRequest = transport.createRequestFactory().buildGetRequest(new GenericUrl("https://google.com")).setParser(new JsonObjectParser(new JacksonFactory()));
+    HttpRequest httpRequest = transport.createRequestFactory().buildGetRequest(new GenericUrl("https://google.com")).setParser(new JsonObjectParser(new GsonFactory()));
     GoogleAuth.configureErrorHandling(httpRequest);
     return httpRequest;
   }

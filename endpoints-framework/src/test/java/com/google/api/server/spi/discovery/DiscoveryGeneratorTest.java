@@ -20,7 +20,7 @@ import static com.google.api.server.spi.config.model.EndpointsFlag.MAP_SCHEMA_IG
 import static com.google.api.server.spi.config.model.EndpointsFlag.MAP_SCHEMA_SUPPORT_ARRAYS_VALUES;
 import static com.google.common.truth.Truth.assertThat;
 
-import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.server.spi.IoUtil;
 import com.google.api.server.spi.ObjectMapperUtil;
 import com.google.api.server.spi.ServiceContext;
@@ -285,13 +285,13 @@ public class DiscoveryGeneratorTest {
 
   private RestDescription readExpectedAsDiscovery(String file) throws Exception {
     String expectedString = IoUtil.readResourceFile(DiscoveryGeneratorTest.class, file);
-    return JacksonFactory.getDefaultInstance().createJsonParser(expectedString)
+    return GsonFactory.getDefaultInstance().createJsonParser(expectedString)
         .parse(RestDescription.class);
   }
 
   private DirectoryList readExpectedAsDirectory(String file) throws Exception {
     String expectedString = IoUtil.readResourceFile(DiscoveryGeneratorTest.class, file);
-    return JacksonFactory.getDefaultInstance().createJsonParser(expectedString)
+    return GsonFactory.getDefaultInstance().createJsonParser(expectedString)
         .parse(DirectoryList.class);
   }
 

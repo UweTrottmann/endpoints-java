@@ -39,7 +39,7 @@ class BoundedGenericEndpoint1<T extends Integer & Comparable<Integer>>
  *   to be named... hence no "? extends Blah"
  *   
  *   B) The bounds are enforced at compile type and that information is lost. In fact,
- *   Class<?>.getTypeParameters will only return "T" and not "T extends Number"
+ *   Class&lt;?&gt;.getTypeParameters will only return "T" and not "T extends Number"
  */
 @Api
 public class BoundedGenericEndpoint extends BoundedGenericEndpoint1<Integer> {
