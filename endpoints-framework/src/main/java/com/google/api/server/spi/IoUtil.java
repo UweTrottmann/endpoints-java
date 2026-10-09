@@ -122,7 +122,9 @@ public final class IoUtil {
     ByteArrayOutputStream os = new ByteArrayOutputStream();
     try {
       byte[] buffer = new byte[bufferSize];
-      for (int n = is.read(buffer); n > 0; n = is.read(buffer)) {
+      // Only -1 signals the end of the stream. Some servlet containers may return 0 if no data is
+      // available yet, so stopping on 0 would silently truncate the body.
+      for (int n = is.read(buffer); n != -1; n = is.read(buffer)) {
         os.write(buffer, 0, n);
       }
       return os.toString("UTF-8");
@@ -143,11 +145,21 @@ public final class IoUtil {
     if (bodyStream != null && GZIP_ENCODING.equals(request.getHeader(HEADER_CONTENT_ENCODING))) {
       PushbackInputStream pushbackStream = new PushbackInputStream(bodyStream, 2);
       byte[] header = new byte[2];
-      int len = pushbackStream.read(header);
+      // A single read may return fewer bytes than requested, so read until the header is
+      // complete or the stream ends.
+      int len = 0;
+      while (len < header.length) {
+        int n = pushbackStream.read(header, len, header.length - len);
+        if (n == -1) {
+          break;
+        }
+        len += n;
+      }
       if (len > 0) {
         pushbackStream.unread(header, 0, len);
       }
-      return isGzipHeader(header) ? new GZIPInputStream(pushbackStream) : pushbackStream;
+      return len == header.length && isGzipHeader(header)
+          ? new GZIPInputStream(pushbackStream) : pushbackStream;
     }
     return bodyStream;
   }

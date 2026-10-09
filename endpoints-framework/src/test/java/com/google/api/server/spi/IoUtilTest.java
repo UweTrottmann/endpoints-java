@@ -31,6 +31,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
+import javax.servlet.ServletInputStream;
+
 /**
  * Tests for {@link IoUtil}.
  */
@@ -53,9 +55,58 @@ public class IoUtilTest {
   }
 
   @Test
+  public void testReadStream_readReturnsZero() throws Exception {
+    // Stream that returns 0 bytes before the data and between chunks
+    InputStream is = new ByteArrayInputStream("abc123".getBytes(StandardCharsets.UTF_8)) {
+      private int calls = 0;
+
+      @Override
+      public synchronized int read(byte[] b, int off, int len) {
+        if (calls++ % 2 == 0) {
+          return 0;
+        }
+        return super.read(b, off, Math.min(len, 3));
+      }
+    };
+    assertEquals("abc123", IoUtil.readStream(is));
+  }
+
+  @Test
   public void testGetRequestInputStream() throws Exception {
     MockHttpServletRequest request = new MockHttpServletRequest();
     request.setContent(compress("test".getBytes(StandardCharsets.UTF_8)));
+    request.addHeader("Content-Encoding", "gzip");
+    InputStream stream = IoUtil.getRequestInputStream(request);
+    assertThat(stream).isInstanceOf(GZIPInputStream.class);
+    assertThat(IoUtil.readStream(stream)).isEqualTo("test");
+  }
+
+  @Test
+  public void testGetRequestInputStream_headerSplitAcrossReads() throws Exception {
+    // Request stream that returns 0 or 1 bytes per read
+    final InputStream content =
+        new ByteArrayInputStream(compress("test".getBytes(StandardCharsets.UTF_8)));
+    MockHttpServletRequest request = new MockHttpServletRequest() {
+      @Override
+      public ServletInputStream getInputStream() {
+        return new ServletInputStream() {
+          private int calls = 0;
+
+          @Override
+          public int read() throws IOException {
+            return content.read();
+          }
+
+          @Override
+          public int read(byte[] b, int off, int len) throws IOException {
+            if (calls++ % 2 == 0) {
+              return 0;
+            }
+            return content.read(b, off, Math.min(len, 1));
+          }
+        };
+      }
+    };
     request.addHeader("Content-Encoding", "gzip");
     InputStream stream = IoUtil.getRequestInputStream(request);
     assertThat(stream).isInstanceOf(GZIPInputStream.class);
