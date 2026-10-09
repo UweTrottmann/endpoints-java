@@ -15,8 +15,6 @@
  */
 package com.google.api.server.spi;
 
-import com.google.common.annotations.VisibleForTesting;
-
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -30,6 +28,7 @@ import java.io.OutputStream;
 import java.io.PushbackInputStream;
 import java.io.RandomAccessFile;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.GZIPInputStream;
@@ -107,30 +106,17 @@ public final class IoUtil {
     return contents;
   }
 
-  @VisibleForTesting
-  static final int BUFFER_SIZE = 1024;
-
   /**
    * Reads the full content of a stream and returns it in a string.
    */
   public static String readStream(InputStream is) throws IOException {
-    return readStream(is, BUFFER_SIZE);
-  }
-
-  @VisibleForTesting
-  static String readStream(InputStream is, int bufferSize) throws IOException {
-    ByteArrayOutputStream os = new ByteArrayOutputStream();
-    try {
-      byte[] buffer = new byte[bufferSize];
-      // Only -1 signals the end of the stream. Some servlet containers may return 0 if no data is
-      // available yet, so stopping on 0 would silently truncate the body.
-      for (int n = is.read(buffer); n != -1; n = is.read(buffer)) {
-        os.write(buffer, 0, n);
-      }
-      return os.toString("UTF-8");
-    } finally {
-      is.close();
-      os.close();
+    // Reads until the end of the stream, so does not stop if a read returns 0 bytes, which some
+    // servlet containers do if no data is available yet. Do not use readAllBytes, some JDK
+    // versions return corrupted data if a read returns 0 bytes.
+    try (is) {
+      ByteArrayOutputStream os = new ByteArrayOutputStream();
+      is.transferTo(os);
+      return os.toString(StandardCharsets.UTF_8);
     }
   }
 
@@ -147,14 +133,7 @@ public final class IoUtil {
       byte[] header = new byte[2];
       // A single read may return fewer bytes than requested, so read until the header is
       // complete or the stream ends.
-      int len = 0;
-      while (len < header.length) {
-        int n = pushbackStream.read(header, len, header.length - len);
-        if (n == -1) {
-          break;
-        }
-        len += n;
-      }
+      int len = pushbackStream.readNBytes(header, 0, header.length);
       if (len > 0) {
         pushbackStream.unread(header, 0, len);
       }

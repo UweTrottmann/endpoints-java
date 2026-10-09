@@ -45,27 +45,34 @@ public class IoUtilTest {
   }
 
   @Test
-  public void testReadStream_inputSmallerThanBuffer() throws Exception {
+  public void testReadStream() throws Exception {
     testReadStream("abc123");
   }
 
   @Test
-  public void testReadStream_inputBiggerThanBuffer() throws Exception {
-    testReadStream("abc123", 3);
+  public void testReadStream_largeInput() throws Exception {
+    testReadStream("abc123".repeat(10_000));
   }
 
   @Test
   public void testReadStream_readReturnsZero() throws Exception {
-    // Stream that returns 0 bytes before the data and between chunks
-    InputStream is = new ByteArrayInputStream("abc123".getBytes(StandardCharsets.UTF_8)) {
+    // Stream that returns 0 bytes before the data and between chunks. Extends InputStream and not
+    // ByteArrayInputStream, as the latter overrides readAllBytes and would not call read.
+    final InputStream content = new ByteArrayInputStream("abc123".getBytes(StandardCharsets.UTF_8));
+    InputStream is = new InputStream() {
       private int calls = 0;
 
       @Override
-      public synchronized int read(byte[] b, int off, int len) {
+      public int read() throws IOException {
+        return content.read();
+      }
+
+      @Override
+      public int read(byte[] b, int off, int len) throws IOException {
         if (calls++ % 2 == 0) {
           return 0;
         }
-        return super.read(b, off, Math.min(len, 3));
+        return content.read(b, off, Math.min(len, 3));
       }
     };
     assertEquals("abc123", IoUtil.readStream(is));
@@ -142,12 +149,8 @@ public class IoUtilTest {
   }
 
   private void testReadStream(String input) throws Exception {
-    testReadStream(input, IoUtil.BUFFER_SIZE);
-  }
-
-  private void testReadStream(String input, int bufferSize) throws Exception {
-    InputStream is = new ByteArrayInputStream(input.getBytes("UTF-8"));
-    assertEquals(input, IoUtil.readStream(is, bufferSize));
+    InputStream is = new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8));
+    assertEquals(input, IoUtil.readStream(is));
   }
 
   private static byte[] compress(byte[] bytes) {
