@@ -21,7 +21,7 @@ import org.jsoup.select.Elements;
 /**
  * Fetches up-to-date auth scope descriptions from https://developers.google.com/identity/protocols/googlescopes.
  * Use this to update the googleScopeDescriptions.properties.
- * Uses Jsoup from the appengine-api-stubs package (used as test dependency).
+ * Uses Jsoup (used as test dependency).
  */
 public class AuthScopeDescriptions {
 

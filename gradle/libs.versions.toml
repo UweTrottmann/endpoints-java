@@ -22,6 +22,7 @@ guava = { module = "com.google.guava:guava", version.ref = "guava" }
 guava-testlib = { module = "com.google.guava:guava-testlib", version.ref = "guava" }
 jackson-databind = "com.fasterxml.jackson.core:jackson-databind:2.13.4.2"
 javax-inject = "javax.inject:javax.inject:1"
+jsoup = "org.jsoup:jsoup:1.23.2"
 jsr305 = "com.google.code.findbugs:jsr305:3.0.1"
 junit = "junit:junit:4.13.1"
 mockito-core = "org.mockito:mockito-core:5.24.0"

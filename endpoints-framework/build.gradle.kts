@@ -102,5 +102,6 @@ dependencies {
     testImplementation(libs.truth)
     testImplementation(libs.spring.test)
     testImplementation(libs.guava.testlib)
+    testImplementation(libs.jsoup)
     testImplementation(libs.swagger.core)
 }
