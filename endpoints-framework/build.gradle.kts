@@ -83,14 +83,14 @@ val annotations = listOf(
 )
 
 val apiTypes = listOf(
-    "DataAndTime.java",
-    "SimpleData.java"
+    "DateAndTime.java",
+    "SimpleDate.java"
 )
 
 // Generates a Javadoc for types meant to be used by API producers
 tasks.register<Javadoc>("siteJavadoc") {
     setSource(annotations.map { "src/main/java/com/google/api/server/spi/config/$it" } +
-        apiTypes.map { "src/main/java/com/google/api/server/spi/types" })
+        apiTypes.map { "src/main/java/com/google/api/server/spi/types/$it" })
     setDestinationDir(file("$buildDir/docs/site-docs"))
 }
 
