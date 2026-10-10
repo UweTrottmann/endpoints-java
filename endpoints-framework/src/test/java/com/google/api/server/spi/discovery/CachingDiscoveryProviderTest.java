@@ -37,7 +37,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Tests for {@link CachingDiscoveryProvider}.
  */
-@RunWith(MockitoJUnitRunner.Silent.class)
+@RunWith(MockitoJUnitRunner.class)
 public class CachingDiscoveryProviderTest {
   private static final String ROOT = "root";
   private static final String NAME = "name";

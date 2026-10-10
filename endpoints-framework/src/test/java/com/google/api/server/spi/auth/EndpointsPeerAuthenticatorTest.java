@@ -37,7 +37,7 @@ import java.net.InetAddress;
 /**
  * Tests for {@code EndpointsPeerAuthenticator}.
  */
-@RunWith(MockitoJUnitRunner.Silent.class)
+@RunWith(MockitoJUnitRunner.class)
 public class EndpointsPeerAuthenticatorTest {
   private static final String FAKE_TOKEN = "fakeToken";
 

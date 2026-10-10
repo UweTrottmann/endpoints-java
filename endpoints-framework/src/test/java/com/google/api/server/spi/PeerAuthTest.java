@@ -43,7 +43,7 @@ import java.util.List;
 /**
  * Test for PeerAuth.
  */
-@RunWith(MockitoJUnitRunner.Silent.class)
+@RunWith(MockitoJUnitRunner.class)
 public class PeerAuthTest {
   @Mock private ApiMethodConfig config;
 

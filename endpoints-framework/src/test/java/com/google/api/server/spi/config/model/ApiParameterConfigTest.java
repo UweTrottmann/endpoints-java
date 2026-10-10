@@ -38,7 +38,7 @@ import java.util.Collections;
 /**
  * Tests for {@link ApiParameterConfig}.
  */
-@RunWith(MockitoJUnitRunner.Silent.class)
+@RunWith(MockitoJUnitRunner.class)
 public class ApiParameterConfigTest {
   private ApiParameterConfig config;
   private ApiParameterConfig configWithArray;

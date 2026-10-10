@@ -33,7 +33,7 @@ import org.springframework.mock.web.MockHttpServletRequest;
 /**
  * Test for {@code EndpointsAuthenticator}.
  */
-@RunWith(MockitoJUnitRunner.Silent.class)
+@RunWith(MockitoJUnitRunner.class)
 public class EndpointsAuthenticatorTest {
   private static final User USER = new User("123", "dummy@gmail.com");
 

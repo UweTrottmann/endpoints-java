@@ -38,7 +38,7 @@ import java.util.Arrays;
 /**
  * Tests for {@link ApiClassAnnotationConfig}.
  */
-@RunWith(MockitoJUnitRunner.Silent.class)
+@RunWith(MockitoJUnitRunner.class)
 public class ApiClassAnnotationConfigTest {
   private ApiClassAnnotationConfig annotationConfig;
 

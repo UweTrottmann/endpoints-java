@@ -42,7 +42,7 @@ import java.util.Map;
 /**
  * Tests for {@link ApiClassConfig}.
  */
-@RunWith(MockitoJUnitRunner.Silent.class)
+@RunWith(MockitoJUnitRunner.class)
 public class ApiClassConfigTest {
   private ApiClassConfig config;
 

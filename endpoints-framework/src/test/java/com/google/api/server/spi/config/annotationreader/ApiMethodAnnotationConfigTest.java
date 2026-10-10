@@ -53,7 +53,7 @@ import java.util.List;
 /**
  * Tests for {@link ApiMethodConfig}.
  */
-@RunWith(MockitoJUnitRunner.Silent.class)
+@RunWith(MockitoJUnitRunner.class)
 public class ApiMethodAnnotationConfigTest {
   private ApiMethodConfig config;
   private ApiMethodAnnotationConfig annotationConfig;

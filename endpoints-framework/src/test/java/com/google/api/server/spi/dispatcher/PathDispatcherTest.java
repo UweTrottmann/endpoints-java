@@ -33,7 +33,7 @@ import java.io.IOException;
 /**
  * Tests for {@link PathDispatcher}.
  */
-@RunWith(MockitoJUnitRunner.Silent.class)
+@RunWith(MockitoJUnitRunner.class)
 public class PathDispatcherTest {
   private DispatcherContext context;
   @Mock private DispatcherHandler<DispatcherContext> getHandler;

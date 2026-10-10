@@ -67,7 +67,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 /**
  * Tests for {@link ServletRequestParamReader}.
  */
-@RunWith(MockitoJUnitRunner.Silent.class)
+@RunWith(MockitoJUnitRunner.class)
 public class ServletRequestParamReaderTest {
   private static final String VALUE_STRING = "123";
   private static final boolean VALUE_BOOLEAN = true;

@@ -34,7 +34,7 @@ import org.springframework.mock.web.MockHttpServletRequest;
 /**
  * Tests for {@link ProxyingDiscoveryService}.
  */
-@RunWith(MockitoJUnitRunner.Silent.class)
+@RunWith(MockitoJUnitRunner.class)
 public class ProxyingDiscoveryServiceTest {
   private static final String SERVER_NAME = "localhost";
   private static final int SERVER_PORT = 8080;

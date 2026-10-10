@@ -28,7 +28,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 /**
  * Tests for {@link BackendProperties}.
  */
-@RunWith(MockitoJUnitRunner.Silent.class)
+@RunWith(MockitoJUnitRunner.class)
 public class BackendPropertiesTest {
   @Mock private BackendProperties.EnvReader envReader;
   private BackendProperties appEngineProperties;

@@ -41,7 +41,7 @@ import org.mockito.junit.MockitoJUnitRunner;
  *
  * @author Eric Orth
  */
-@RunWith(MockitoJUnitRunner.Silent.class)
+@RunWith(MockitoJUnitRunner.class)
 public class ApiConfigLoaderTest {
   @Mock private ApiConfigAnnotationReader annotationSource;
   @Mock private ApiConfigSource datastoreSource;

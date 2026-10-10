@@ -43,7 +43,7 @@ import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.when;
 
 /** Unit tests for {@link ConfiguredObjectMapper}. */
-@RunWith(MockitoJUnitRunner.Silent.class)
+@RunWith(MockitoJUnitRunner.class)
 public class ConfiguredObjectMapperTest {
 
   private Map<ConfiguredObjectMapper.CacheKey, ConfiguredObjectMapper> cache;

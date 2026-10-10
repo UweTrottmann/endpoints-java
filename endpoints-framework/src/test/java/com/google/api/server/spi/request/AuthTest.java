@@ -45,7 +45,7 @@ import java.util.List;
 /**
  * Test for Auth.
  */
-@RunWith(MockitoJUnitRunner.Silent.class)
+@RunWith(MockitoJUnitRunner.class)
 public class AuthTest {
   @Mock protected ApiMethodConfig config;
 

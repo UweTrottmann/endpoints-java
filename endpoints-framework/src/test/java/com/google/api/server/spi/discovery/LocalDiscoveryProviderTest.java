@@ -29,7 +29,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 /**
  * Tests for {@link LocalDiscoveryProvider}.
  */
-@RunWith(MockitoJUnitRunner.Silent.class)
+@RunWith(MockitoJUnitRunner.class)
 public class LocalDiscoveryProviderTest {
   private static final String ROOT = "https://root.appspot.com/api";
   private static final String NAME = "foo";
