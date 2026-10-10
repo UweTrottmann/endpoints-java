@@ -185,6 +185,13 @@ public class ApiConfigValidator {
         validateRestSignatureUnique(methodConfig, restfulSignatures);
         validateBackendMethodNameUnique(methodConfig, javaMethodNames);
         validateMethod(methodConfig);
+      }
+    }
+    // Only create schemas once all methods are valid, schema creation fails on invalid configs
+    // (e.g. multiple serializers) with less helpful exceptions. Method order is not stable as it
+    // depends on Class.getDeclaredMethods().
+    for (ApiMethodConfig methodConfig : configMap.values()) {
+      if (!methodConfig.isIgnored()) {
         validateResourceAndFieldNames(methodConfig);
       }
     }
