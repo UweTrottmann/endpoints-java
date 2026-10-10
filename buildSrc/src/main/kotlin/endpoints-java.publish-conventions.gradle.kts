@@ -5,7 +5,7 @@ plugins {
     id("signing")
 }
 
-version = "2.2.3"
+version = "2.2.4-SNAPSHOT"
 group = "com.uwetrottmann.endpoints"
 
 publishing {
