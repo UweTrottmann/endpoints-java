@@ -45,6 +45,7 @@ public class Attribute {
   /**
    * @deprecated
    */
+  @Deprecated
   public static final String RESTRICT_SERVLET = "endpoints:Restrict-Servlet";
   /**
    * A {@link Boolean} indicating if the App Engine user should be populated.
