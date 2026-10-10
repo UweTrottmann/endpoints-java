@@ -1,12 +1,20 @@
+import org.gradle.kotlin.dsl.java
+
 // Configures common publishing settings
 
 plugins {
+    `java-library`
     id("maven-publish")
     id("signing")
 }
 
 version = "2.2.4-SNAPSHOT"
 group = "com.uwetrottmann.endpoints"
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
 
 publishing {
     // Note: Sonatype repo created by publish-plugin, see root build.gradle.
