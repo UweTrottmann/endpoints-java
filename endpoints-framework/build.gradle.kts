@@ -100,8 +100,6 @@ dependencies {
     testImplementation(libs.javax.inject)
     testImplementation(libs.mockito.core)
     testImplementation(libs.truth)
-    testImplementation(libs.appengine.testing)
-    testImplementation(libs.appengine.api.stubs)
     testImplementation(libs.spring.test)
     testImplementation(libs.guava.testlib)
     testImplementation(libs.swagger.core)

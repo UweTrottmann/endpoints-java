@@ -1,5 +1,5 @@
 [versions]
-appengine = "1.9.60"
+appengine = "5.1.0"
 auto-value = "1.11.0"
 flogger = "0.3.1"
 google-api-client = "2.2.0"
@@ -8,8 +8,6 @@ swagger = "1.5.9"
 
 [libraries]
 appengine-api = { module = "com.google.appengine:appengine-api-1.0-sdk", version.ref = "appengine" }
-appengine-api-stubs = { module = "com.google.appengine:appengine-api-stubs", version.ref = "appengine" }
-appengine-testing = { module = "com.google.appengine:appengine-testing", version.ref = "appengine" }
 appengine-tools-sdk = { module = "com.google.appengine:appengine-tools-sdk", version.ref = "appengine" }
 auto-value = { module = "com.google.auto.value:auto-value", version.ref = "auto-value" }
 auto-value-annotations = { module = "com.google.auto.value:auto-value-annotations", version.ref = "auto-value" }
