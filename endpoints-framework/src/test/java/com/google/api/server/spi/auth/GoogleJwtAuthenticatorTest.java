@@ -32,7 +32,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.mock.web.MockHttpServletRequest;
 
 import java.io.IOException;
@@ -41,7 +41,7 @@ import java.security.GeneralSecurityException;
 /**
  * Tests for GoogleJwtAuthenticator.
  */
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class)
 public class GoogleJwtAuthenticatorTest {
   private static final String TOKEN = "abcdefjh.abcdefjh.abcdefjh";
   private static final String EMAIL = "dummy@gmail.com";

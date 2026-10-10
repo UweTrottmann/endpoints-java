@@ -28,13 +28,13 @@ import com.google.common.collect.ImmutableList;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.mock.web.MockHttpServletRequest;
 
 /**
  * Tests for {@link ProxyingDiscoveryService}.
  */
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class)
 public class ProxyingDiscoveryServiceTest {
   private static final String SERVER_NAME = "localhost";
   private static final int SERVER_PORT = 8080;

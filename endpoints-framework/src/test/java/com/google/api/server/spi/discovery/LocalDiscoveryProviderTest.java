@@ -2,9 +2,9 @@ package com.google.api.server.spi.discovery;
 
 import static com.google.common.truth.Truth.assertThat;
 import static org.junit.Assert.fail;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyListOf;
-import static org.mockito.Matchers.eq;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyList;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
 import com.google.api.server.spi.config.model.ApiConfig;
@@ -24,12 +24,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 /**
  * Tests for {@link LocalDiscoveryProvider}.
  */
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class)
 public class LocalDiscoveryProviderTest {
   private static final String ROOT = "https://root.appspot.com/api";
   private static final String NAME = "foo";
@@ -43,7 +43,7 @@ public class LocalDiscoveryProviderTest {
   public void setUp() {
     provider = new LocalDiscoveryProvider(ImmutableList.<ApiConfig>of(), generator, repository);
     when(generator.writeDiscovery(
-        anyListOf(ApiConfig.class), any(DiscoveryContext.class), eq(repository)))
+        anyList(), any(DiscoveryContext.class), eq(repository)))
         .thenReturn(Result.builder().setDiscoveryDocs(
             ImmutableMap.of(new ApiKey(NAME, VERSION, null /* root */), getPlaceholderDoc()))
             .setDirectory(getPlaceholderDirectory())

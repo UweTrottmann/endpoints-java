@@ -34,14 +34,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 /**
  * Tests for {@link ApiConfigLoader}.
  *
  * @author Eric Orth
  */
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class)
 public class ApiConfigLoaderTest {
   @Mock private ApiConfigAnnotationReader annotationSource;
   @Mock private ApiConfigSource datastoreSource;
