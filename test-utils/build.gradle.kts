@@ -18,20 +18,13 @@ plugins {
     id("endpoints-java.java-conventions")
 }
 
-val appengineVersion: String by project
-val javaxinjectVersion: String by project
-val junitVersion: String by project
-val mockitoVersion: String by project
-val truthVersion: String by project
-val servletVersion: String by project
-
 dependencies {
     implementation(project(":endpoints-framework"))
-    implementation("com.google.appengine:appengine-api-1.0-sdk:$appengineVersion")
-    implementation("javax.inject:javax.inject:$javaxinjectVersion")
-    implementation("junit:junit:$junitVersion")
-    implementation("org.mockito:mockito-core:$mockitoVersion")
-    implementation("com.google.truth:truth:$truthVersion")
+    implementation(libs.appengine.api)
+    implementation(libs.javax.inject)
+    implementation(libs.junit)
+    implementation(libs.mockito.core)
+    implementation(libs.truth)
 
-    compileOnly("javax.servlet:servlet-api:$servletVersion")
+    compileOnly(libs.servlet.api)
 }

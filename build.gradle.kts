@@ -2,10 +2,8 @@ val propertySonatypeUsername = providers.gradleProperty("SONATYPE_NEXUS_USERNAME
 val propertySonatypePassword = providers.gradleProperty("SONATYPE_NEXUS_PASSWORD")
 
 plugins {
-    // https://github.com/ben-manes/gradle-versions-plugin/releases
-    id("com.github.ben-manes.versions") version "0.65.0"
-    // https://github.com/gradle-nexus/publish-plugin/releases
-    id("io.github.gradle-nexus.publish-plugin") version "2.0.0"
+    alias(libs.plugins.versions)
+    alias(libs.plugins.nexus.publish)
 }
 
 // Plugin to publish to Central https://github.com/gradle-nexus/publish-plugin/

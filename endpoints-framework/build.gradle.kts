@@ -19,23 +19,6 @@ plugins {
     id("endpoints-java.publish-conventions")
 }
 
-val guavaVersion: String by project
-val jacksonVersion: String by project
-val appengineVersion: String by project
-val floggerVersion: String by project
-val httpclientVersion: String by project
-val apiclientVersion: String by project
-val findbugsVersion: String by project
-val fileUploadVersion: String by project
-val swaggerVersion: String by project
-val slf4jVersion: String by project
-val servletVersion: String by project
-val junitVersion: String by project
-val javaxinjectVersion: String by project
-val mockitoVersion: String by project
-val truthVersion: String by project
-val springtestVersion: String by project
-
 // Set project-specific publishing properties
 publishing {
     publications {
@@ -94,32 +77,32 @@ tasks.processTestResources {
 }
 
 dependencies {
-    api("com.google.apis:google-api-services-discovery:v1-rev20200806-2.0.0")
-    api("com.google.guava:guava:$guavaVersion")
-    api("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
-    implementation("com.google.appengine:appengine-api-1.0-sdk:$appengineVersion")
-    implementation("com.google.flogger:flogger:$floggerVersion")
-    runtimeOnly("com.google.flogger:flogger-system-backend:$floggerVersion")
-    api("com.google.http-client:google-http-client:$httpclientVersion")
-    implementation("com.google.api-client:google-api-client:$apiclientVersion")
-    implementation("com.google.api-client:google-api-client-appengine:$apiclientVersion")
-    implementation("com.google.code.findbugs:jsr305:$findbugsVersion")
-    implementation("commons-fileupload:commons-fileupload:$fileUploadVersion")
-    implementation("io.swagger:swagger-models:$swaggerVersion")
-    implementation("org.slf4j:slf4j-nop:$slf4jVersion")
+    api(libs.google.api.services.discovery)
+    api(libs.guava)
+    api(libs.jackson.databind)
+    implementation(libs.appengine.api)
+    implementation(libs.flogger)
+    runtimeOnly(libs.flogger.system.backend)
+    api(libs.google.http.client)
+    implementation(libs.google.api.client)
+    implementation(libs.google.api.client.appengine)
+    implementation(libs.jsr305)
+    implementation(libs.commons.fileupload)
+    implementation(libs.swagger.models)
+    implementation(libs.slf4j.nop)
 
-    compileOnly("javax.servlet:servlet-api:$servletVersion")
-    compileOnly("com.google.auto.value:auto-value-annotations:1.11.0")
-    annotationProcessor("com.google.auto.value:auto-value:1.11.0")
+    compileOnly(libs.servlet.api)
+    compileOnly(libs.auto.value.annotations)
+    annotationProcessor(libs.auto.value)
 
     testImplementation(project(":test-utils"))
-    testImplementation("junit:junit:$junitVersion")
-    testImplementation("javax.inject:javax.inject:$javaxinjectVersion")
-    testImplementation("org.mockito:mockito-core:$mockitoVersion")
-    testImplementation("com.google.truth:truth:$truthVersion")
-    testImplementation("com.google.appengine:appengine-testing:$appengineVersion")
-    testImplementation("com.google.appengine:appengine-api-stubs:$appengineVersion")
-    testImplementation("org.springframework:spring-test:$springtestVersion")
-    testImplementation("com.google.guava:guava-testlib:$guavaVersion")
-    testImplementation("io.swagger:swagger-core:$swaggerVersion")
+    testImplementation(libs.junit)
+    testImplementation(libs.javax.inject)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.truth)
+    testImplementation(libs.appengine.testing)
+    testImplementation(libs.appengine.api.stubs)
+    testImplementation(libs.spring.test)
+    testImplementation(libs.guava.testlib)
+    testImplementation(libs.swagger.core)
 }

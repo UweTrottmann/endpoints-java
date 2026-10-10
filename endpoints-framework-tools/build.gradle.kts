@@ -20,15 +20,6 @@ plugins {
     application
 }
 
-val appengineVersion: String by project
-val swaggerVersion: String by project
-val junitVersion: String by project
-val javaxinjectVersion: String by project
-val mockitoVersion: String by project
-val truthVersion: String by project
-val springtestVersion: String by project
-val servletVersion: String by project
-
 // Set project-specific publishing properties
 publishing {
     publications {
@@ -58,17 +49,17 @@ application {
 
 dependencies {
     implementation(project(":endpoints-framework"))
-    implementation("com.google.appengine:appengine-tools-sdk:$appengineVersion")
-    implementation("io.swagger:swagger-core:$swaggerVersion")
-    implementation("io.swagger:swagger-models:$swaggerVersion")
+    implementation(libs.appengine.tools.sdk)
+    implementation(libs.swagger.core)
+    implementation(libs.swagger.models)
 
     testImplementation(project(":test-utils"))
-    testImplementation("junit:junit:$junitVersion")
-    testImplementation("javax.inject:javax.inject:$javaxinjectVersion")
-    testImplementation("org.mockito:mockito-core:$mockitoVersion")
-    testImplementation("com.google.truth:truth:$truthVersion")
-    testImplementation("org.springframework:spring-test:$springtestVersion")
-    testImplementation("com.google.appengine:appengine-api-1.0-sdk:$appengineVersion")
+    testImplementation(libs.junit)
+    testImplementation(libs.javax.inject)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.truth)
+    testImplementation(libs.spring.test)
+    testImplementation(libs.appengine.api)
 
-    testCompileOnly("javax.servlet:servlet-api:$servletVersion")
+    testCompileOnly(libs.servlet.api)
 }
