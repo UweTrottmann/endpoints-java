@@ -79,6 +79,7 @@ tasks.processTestResources {
 dependencies {
     api(libs.google.api.services.discovery)
     api(libs.guava)
+    api(platform(libs.jackson.bom))
     api(libs.jackson.databind)
     implementation(libs.appengine.api)
     implementation(libs.flogger)

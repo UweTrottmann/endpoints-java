@@ -20,7 +20,8 @@ google-api-services-discovery = "com.google.apis:google-api-services-discovery:v
 google-http-client = "com.google.http-client:google-http-client:1.42.3"
 guava = { module = "com.google.guava:guava", version.ref = "guava" }
 guava-testlib = { module = "com.google.guava:guava-testlib", version.ref = "guava" }
-jackson-databind = "com.fasterxml.jackson.core:jackson-databind:2.13.4.2"
+jackson-bom = "com.fasterxml.jackson:jackson-bom:2.21.7"
+jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind" }
 javax-inject = "javax.inject:javax.inject:1"
 jsoup = "org.jsoup:jsoup:1.23.2"
 jsr305 = "com.google.code.findbugs:jsr305:3.0.1"
