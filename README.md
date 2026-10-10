@@ -29,12 +29,12 @@ the dependency with the `endpoints-framework` artifact from the
     <dependency>
       <groupId>com.uwetrottmann.endpoints</groupId>
       <artifactId>endpoints-framework</artifactId>
-      <version>2.2.3</version>
+      <version>2.3.0</version>
     </dependency>
 
 In Gradle, the new dependency looks like this:
 
-    compile group: 'com.uwetrottmann.endpoints', name: 'endpoints-framework', version: '2.2.3'
+    implementation("com.uwetrottmann.endpoints:endpoints-framework:2.3.0")
 
 You also need to update your `web.xml`. Simply replace all instances of
 `SystemServiceServlet` with `EndpointsServlet` and replace `/_ah/spi/*` with

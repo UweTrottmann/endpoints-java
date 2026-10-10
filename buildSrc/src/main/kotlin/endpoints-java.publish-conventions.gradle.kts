@@ -8,7 +8,7 @@ plugins {
     id("signing")
 }
 
-version = "2.2.4-SNAPSHOT"
+version = "2.3.0"
 group = "com.uwetrottmann.endpoints"
 
 java {
