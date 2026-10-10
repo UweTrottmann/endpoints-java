@@ -1,9 +1,10 @@
-include ':endpoints-framework'
-//include ':endpoints-framework-all'
-include ':endpoints-framework-tools'
-//include ':endpoints-framework-guice'
-include ':test-utils'
-//include ':test-compat'
-//include ':test-compat:legacy-app'
-//include ':test-compat:new-app'
-//include ':test-compat:new-app-guice'
+rootProject.name = "endpoints-java"
+include(":endpoints-framework")
+//include(":endpoints-framework-all")
+include(":endpoints-framework-tools")
+//include(":endpoints-framework-guice")
+include(":test-utils")
+//include(":test-compat")
+//include(":test-compat:legacy-app")
+//include(":test-compat:new-app")
+//include(":test-compat:new-app-guice")
