@@ -15,47 +15,60 @@
  */
 
 plugins {
-  id("endpoints-java.java-conventions")
-  id("endpoints-java.publish-conventions")
+    id("endpoints-java.java-conventions")
+    id("endpoints-java.publish-conventions")
+    application
 }
+
+val appengineVersion: String by project
+val swaggerVersion: String by project
+val junitVersion: String by project
+val javaxinjectVersion: String by project
+val mockitoVersion: String by project
+val truthVersion: String by project
+val springtestVersion: String by project
+val servletVersion: String by project
 
 // Set project-specific publishing properties
 publishing {
-  publications {
-    mavenJava(MavenPublication) {
-      artifactId = "endpoints-framework-tools"
-      from components.java
-      pom {
-        name.set("Endpoints Framework Tools")
-        description.set("Command line tools for supporting the Endpoints Framework.")
-      }
+    publications {
+        named<MavenPublication>("mavenJava") {
+            artifactId = "endpoints-framework-tools"
+            from(components["java"])
+            pom {
+                name.set("Endpoints Framework Tools")
+                description.set("Command line tools for supporting the Endpoints Framework.")
+            }
+        }
     }
-  }
 }
 
 // Needed to copy resources into build directories
-task copyTestResources(type: Copy) {
-  from "${projectDir}/src/test/resources"
-  into "${buildDir}/classes/test"
+val copyTestResources by tasks.registering(Copy::class) {
+    from("$projectDir/src/test/resources")
+    into("$buildDir/classes/test")
 }
-processTestResources.dependsOn copyTestResources
+tasks.processTestResources {
+    dependsOn(copyTestResources)
+}
 
-apply plugin: 'application'
-mainClassName = 'com.google.api.server.spi.tools.EndpointsTool'
+application {
+    mainClass.set("com.google.api.server.spi.tools.EndpointsTool")
+}
 
 dependencies {
-  implementation project(':endpoints-framework')
-  implementation group: 'com.google.appengine', name: 'appengine-tools-sdk', version: appengineVersion
-  implementation group: 'io.swagger', name: 'swagger-core', version: swaggerVersion
-  implementation group: 'io.swagger', name: 'swagger-models', version: swaggerVersion
+    implementation(project(":endpoints-framework"))
+    implementation("com.google.appengine:appengine-tools-sdk:$appengineVersion")
+    implementation("io.swagger:swagger-core:$swaggerVersion")
+    implementation("io.swagger:swagger-models:$swaggerVersion")
 
-  testImplementation project(':test-utils')
-  testImplementation group: 'junit', name: 'junit', version: junitVersion
-  testImplementation group: 'javax.inject', name: 'javax.inject', version: javaxinjectVersion
-  testImplementation group: 'org.mockito', name: 'mockito-core', version: mockitoVersion
-  testImplementation group: 'com.google.truth', name: 'truth', version: truthVersion
-  testImplementation group: 'org.springframework', name: 'spring-test', version: springtestVersion
-  testImplementation group: 'com.google.appengine', name: 'appengine-api-1.0-sdk', version: appengineVersion
+    testImplementation(project(":test-utils"))
+    testImplementation("junit:junit:$junitVersion")
+    testImplementation("javax.inject:javax.inject:$javaxinjectVersion")
+    testImplementation("org.mockito:mockito-core:$mockitoVersion")
+    testImplementation("com.google.truth:truth:$truthVersion")
+    testImplementation("org.springframework:spring-test:$springtestVersion")
+    testImplementation("com.google.appengine:appengine-api-1.0-sdk:$appengineVersion")
 
-  testCompileOnly group: 'javax.servlet', name: 'servlet-api', version: servletVersion
+    testCompileOnly("javax.servlet:servlet-api:$servletVersion")
 }
