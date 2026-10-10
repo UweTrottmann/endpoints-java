@@ -1,7 +1,7 @@
 include ':endpoints-framework'
 //include ':endpoints-framework-all'
 include ':endpoints-framework-tools'
-include ':endpoints-framework-guice'
+//include ':endpoints-framework-guice'
 include ':test-utils'
 //include ':test-compat'
 //include ':test-compat:legacy-app'
