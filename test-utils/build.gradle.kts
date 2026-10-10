@@ -15,16 +15,16 @@
  */
 
 plugins {
-  id("endpoints-java.java-conventions")
+    id("endpoints-java.java-conventions")
 }
 
 dependencies {
-  implementation project(':endpoints-framework')
-  implementation group: 'com.google.appengine', name: 'appengine-api-1.0-sdk', version: appengineVersion
-  implementation group: 'javax.inject', name: 'javax.inject', version: javaxinjectVersion
-  implementation group: 'junit', name: 'junit', version: junitVersion
-  implementation group: 'org.mockito', name: 'mockito-core', version: mockitoVersion
-  implementation group: 'com.google.truth', name: 'truth', version: truthVersion
+    implementation(project(":endpoints-framework"))
+    implementation(libs.appengine.api)
+    implementation(libs.javax.inject)
+    implementation(libs.junit)
+    implementation(libs.mockito.core)
+    implementation(libs.truth)
 
-  compileOnly group: 'javax.servlet', name: 'servlet-api', version: servletVersion
+    compileOnly(libs.servlet.api)
 }

@@ -146,7 +146,7 @@ public class ConfiguredObjectMapper {
       if (instance == null) {
         ObjectMapper mapper =
             ObjectMapperUtil.createStandardObjectMapper(key.apiSerializationConfig);
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        mapper.setDefaultPropertyInclusion(JsonInclude.Include.NON_NULL);
         mapper.disable(SerializationFeature.WRITE_EMPTY_JSON_ARRAYS);
         for (Module module : key.modulesSet) {
           mapper.registerModule(module);

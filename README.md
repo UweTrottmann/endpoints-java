@@ -8,9 +8,7 @@ in the `com.uwetrottmann.endpoints` group:
 
 1.  `endpoints-framework`: The core framework, required for all applications
     building Endpoints apps.
-2.  `endpoints-framework-guice`: An extension for configuring Endpoints using
-    Guice.
-3.  `endpoints-framework-tools`: Tools for generating discovery documents,
+2.  `endpoints-framework-tools`: Tools for generating discovery documents,
     Swagger documents, and client libraries.
 
 The main documents for consuming Endpoints can be found at

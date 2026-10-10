@@ -1,0 +1,41 @@
+[versions]
+appengine = "5.1.0"
+auto-value = "1.11.0"
+flogger = "0.3.1"
+google-api-client = "2.2.0"
+guava = "31.1-jre"
+swagger = "1.5.9"
+
+[libraries]
+appengine-api = { module = "com.google.appengine:appengine-api-1.0-sdk", version.ref = "appengine" }
+appengine-tools-sdk = { module = "com.google.appengine:appengine-tools-sdk", version.ref = "appengine" }
+auto-value = { module = "com.google.auto.value:auto-value", version.ref = "auto-value" }
+auto-value-annotations = { module = "com.google.auto.value:auto-value-annotations", version.ref = "auto-value" }
+commons-fileupload = "commons-fileupload:commons-fileupload:1.5"
+flogger = { module = "com.google.flogger:flogger", version.ref = "flogger" }
+flogger-system-backend = { module = "com.google.flogger:flogger-system-backend", version.ref = "flogger" }
+google-api-client = { module = "com.google.api-client:google-api-client", version.ref = "google-api-client" }
+google-api-client-appengine = { module = "com.google.api-client:google-api-client-appengine", version.ref = "google-api-client" }
+google-api-services-discovery = "com.google.apis:google-api-services-discovery:v1-rev20200806-2.0.0"
+google-http-client = "com.google.http-client:google-http-client:1.42.3"
+guava = { module = "com.google.guava:guava", version.ref = "guava" }
+guava-testlib = { module = "com.google.guava:guava-testlib", version.ref = "guava" }
+jackson-bom = "com.fasterxml.jackson:jackson-bom:2.21.7"
+jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind" }
+javax-inject = "javax.inject:javax.inject:1"
+jsoup = "org.jsoup:jsoup:1.23.2"
+jsr305 = "com.google.code.findbugs:jsr305:3.0.1"
+junit = "junit:junit:4.13.1"
+mockito-core = "org.mockito:mockito-core:5.24.0"
+servlet-api = "javax.servlet:servlet-api:2.5"
+slf4j-nop = "org.slf4j:slf4j-nop:1.7.21"
+spring-test = "org.springframework:spring-test:3.2.16.RELEASE"
+swagger-core = { module = "io.swagger:swagger-core", version.ref = "swagger" }
+swagger-models = { module = "io.swagger:swagger-models", version.ref = "swagger" }
+truth = "com.google.truth:truth:0.28"
+
+[plugins]
+# https://github.com/gradle-nexus/publish-plugin/releases
+nexus-publish = { id = "io.github.gradle-nexus.publish-plugin", version = "2.0.0" }
+# https://github.com/ben-manes/gradle-versions-plugin/releases
+versions = { id = "com.github.ben-manes.versions", version = "0.65.0" }

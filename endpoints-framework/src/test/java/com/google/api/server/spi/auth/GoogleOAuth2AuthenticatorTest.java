@@ -32,13 +32,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.mock.web.MockHttpServletRequest;
 
 /**
  * Test for GoogleOAuth2Authenticator.
  */
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class)
 public class GoogleOAuth2AuthenticatorTest {
   private static final String TOKEN = "ya29.abcdefg";
   private static final String EMAIL = "dummy@gmail.com";

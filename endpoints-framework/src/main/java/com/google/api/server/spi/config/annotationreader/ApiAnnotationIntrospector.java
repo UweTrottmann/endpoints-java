@@ -230,7 +230,7 @@ public class ApiAnnotationIntrospector extends NopAnnotationIntrospector {
           resourceSerializer.getResourceSchema().getProperties();
       ImmutableMap.Builder<String, Object> values = ImmutableMap.builder();
       while (jp.nextValue() != JsonToken.END_OBJECT) {
-        String property = jp.getCurrentName();
+        String property = jp.currentName();
         final ResourcePropertySchema schemaType = properties.get(property);
         if (schemaType != null) {
           TypeReference<Object> jacksonTypeRef = new TypeReference<Object> (){
