@@ -50,15 +50,6 @@ publishing {
     }
 }
 
-val include by configurations.creating
-configurations["compile"].extendsFrom(include)
-
-tasks.jar {
-    from({
-        include.map { if (it.isDirectory) it else zipTree(it) }
-    })
-}
-
 val annotations = listOf(
     "AnnotationBoolean.java",
     "Api.java",
@@ -91,12 +82,12 @@ val apiTypes = listOf(
 tasks.register<Javadoc>("siteJavadoc") {
     setSource(annotations.map { "src/main/java/com/google/api/server/spi/config/$it" } +
         apiTypes.map { "src/main/java/com/google/api/server/spi/types/$it" })
-    setDestinationDir(file("$buildDir/docs/site-docs"))
+    destinationDirectory.set(java.docsDir.dir("site-docs"))
 }
 
 val copyTestResources by tasks.registering(Copy::class) {
-    from("$projectDir/src/test/resources")
-    into("$buildDir/classes/test")
+    from("src/test/resources")
+    into(layout.buildDirectory.dir("classes/test"))
 }
 tasks.processTestResources {
     dependsOn(copyTestResources)

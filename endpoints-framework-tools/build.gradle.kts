@@ -45,8 +45,8 @@ publishing {
 
 // Needed to copy resources into build directories
 val copyTestResources by tasks.registering(Copy::class) {
-    from("$projectDir/src/test/resources")
-    into("$buildDir/classes/test")
+    from("src/test/resources")
+    into(layout.buildDirectory.dir("classes/test"))
 }
 tasks.processTestResources {
     dependsOn(copyTestResources)
