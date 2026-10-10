@@ -95,10 +95,15 @@ public class BackendPropertiesTest {
   }
 
   @Test
-  public void testGetApplicationId_flex() {
+  public void testGetApplicationId_appEngine_env() {
     System.clearProperty(BackendProperties.APP_ID_PROPERTY);
     Mockito.when(envReader.getenv(BackendProperties.GCLOUD_PROJECT_PROPERTY))
-        .thenReturn(APPLICATION_ID);
+            .thenReturn(APPLICATION_ID);
+    assertEquals(APPLICATION_ID, appEngineProperties.getApplicationId());
+  }
+
+  @Test
+  public void testGetApplicationId_flex() {
     assertNull(properties.getApplicationId());
   }
 }
